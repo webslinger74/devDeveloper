@@ -42,15 +42,16 @@ app.listen(port, (error)=> {
     if(error){
         console.log(error);
     } else {
-        console.log("what the!");
         open(`http://localhost:${port}`);
     }
 })
+
+//Server static assets if in production
+
 if(process.env.NODE_ENV === "production"){
 app.use(express.static('client/build'));
 
 app.get('/', (req, res)=> {
-    console.log("is this found!");
     res.sendFile(path.join(__dirname, './client/build/index.html'));
 })
 }
