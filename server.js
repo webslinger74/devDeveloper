@@ -42,9 +42,9 @@ app.use('/api/posts', posts);
 app.listen(port, (error)=> {
     if(error){
         console.log(error);
-    }// else {
-     //   open(`http://localhost:${port}`);
-  //  }
+    }  else {
+       console.log("server runnning")
+   }
 })
 
 //Server static assets if in production
