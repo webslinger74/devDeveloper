@@ -1,6 +1,6 @@
 const express  = require('express');
 const path = require('path');
-const open = require('open');
+// const open = require('open');
 const bodyParser = require('body-parser');
 const webpack = require('webpack');
 const mongoose = require('mongoose');
@@ -38,12 +38,13 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
+
 app.listen(port, (error)=> {
     if(error){
         console.log(error);
-    } else {
-        open(`http://localhost:${port}`);
-    }
+    }// else {
+     //   open(`http://localhost:${port}`);
+  //  }
 })
 
 //Server static assets if in production
@@ -51,7 +52,7 @@ app.listen(port, (error)=> {
 if(process.env.NODE_ENV === "production"){
 app.use(express.static('client/build'));
 
-app.get('*', (req, res)=> {
+app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 })
 }
